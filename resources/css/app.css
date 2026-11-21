@@ -1,0 +1,336 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-brand-navy: #1a2e5a;
+    --color-brand-gold: #c9a84c;
+    --color-brand-white: #ffffff;
+    --color-brand-ink: #1a1a1a;
+    --color-brand-surface: #f4f6f9;
+    --color-brand-cream: #f8f7f2;
+    --color-brand-whatsapp: #25d366;
+    --color-brand-whatsapp-hover: #20bd5a;
+
+    --ease-professional: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+    html {
+        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        overflow-x: clip;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+        outline: 2px solid var(--color-brand-navy);
+        outline-offset: 2px;
+    }
+
+    .bg-brand-navy a:focus-visible,
+    .bg-brand-navy button:focus-visible,
+    .bg-brand-navy summary:focus-visible,
+    .bg-brand-cta a:focus-visible,
+    .bg-brand-cta button:focus-visible {
+        outline-color: var(--color-brand-gold);
+    }
+}
+
+@layer components {
+    .site-container {
+        @apply mx-auto w-[80%] max-w-none;
+    }
+
+    .site-prose {
+        @apply mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .site-section {
+        @apply py-10 sm:py-12 lg:py-14;
+    }
+
+    .site-section-sm {
+        @apply py-8 sm:py-10;
+    }
+
+    .eyebrow {
+        @apply text-xs font-semibold uppercase tracking-[0.14em] text-brand-gold;
+    }
+
+    .heading-display {
+        @apply text-2xl font-semibold tracking-tight text-balance text-brand-navy sm:text-3xl;
+    }
+
+    .home-pillar-card {
+        @apply rounded-lg border border-brand-navy/10 bg-brand-white px-5 py-6 transition-colors duration-300;
+        border-top-width: 3px;
+        border-top-color: color-mix(in srgb, var(--color-brand-gold) 55%, transparent);
+    }
+
+    .home-pillar-card:hover {
+        @apply border-brand-navy/20;
+        border-top-color: var(--color-brand-gold);
+    }
+
+    .heading-section {
+        @apply text-xl font-semibold tracking-tight text-balance text-brand-navy sm:text-2xl;
+    }
+
+    .lede {
+        @apply text-base leading-relaxed text-brand-ink/75 sm:text-lg;
+    }
+
+    .meta {
+        @apply text-xs uppercase tracking-wider text-brand-ink/50;
+    }
+
+    .surface {
+        @apply bg-brand-surface;
+    }
+
+    .bg-brand-cta {
+        background-color: #121c33;
+    }
+
+    .motion-card {
+        @apply rounded-lg border border-brand-navy/10 bg-brand-white;
+        transition:
+            border-color 250ms var(--ease-professional),
+            box-shadow 250ms var(--ease-professional);
+    }
+
+    .motion-card:hover {
+        @apply border-brand-navy/20 shadow-sm;
+    }
+
+    .motion-card:focus-within {
+        @apply border-brand-navy/25 shadow-sm;
+    }
+
+    .motion-image {
+        @apply overflow-hidden rounded-lg;
+    }
+
+    .motion-image img {
+        @apply h-full w-full object-cover;
+        transition: transform 350ms var(--ease-professional);
+    }
+
+    .group:hover .motion-image img,
+    .motion-image:hover img {
+        transform: scale(1.03);
+    }
+
+    .motion-reveal {
+        animation: jw-reveal-up 350ms var(--ease-professional) both;
+    }
+
+    .motion-reveal-delay-1 {
+        animation-delay: 60ms;
+    }
+
+    .motion-reveal-delay-2 {
+        animation-delay: 120ms;
+    }
+
+    .motion-reveal-delay-3 {
+        animation-delay: 180ms;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded-lg bg-brand-navy px-4 py-2.5 text-sm font-semibold text-brand-white no-underline;
+        transition:
+            background-color 250ms var(--ease-professional),
+            color 250ms var(--ease-professional);
+    }
+
+    .btn-primary:hover {
+        @apply bg-brand-navy/90;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded-lg border border-brand-navy/25 px-4 py-2.5 text-sm font-semibold text-brand-navy no-underline;
+        transition:
+            border-color 250ms var(--ease-professional),
+            background-color 250ms var(--ease-professional),
+            color 250ms var(--ease-professional);
+    }
+
+    .btn-secondary:hover {
+        @apply border-brand-navy bg-brand-navy/5;
+    }
+
+    .btn-accent {
+        @apply inline-flex items-center justify-center rounded-lg bg-brand-gold px-4 py-2.5 text-sm font-semibold text-brand-navy no-underline;
+        transition: background-color 250ms var(--ease-professional);
+    }
+
+    .btn-accent:hover {
+        @apply bg-brand-gold/90;
+    }
+
+    .btn-hero-outline {
+        @apply inline-flex items-center justify-center rounded-lg border border-brand-white/45 px-4 py-2.5 text-sm font-semibold text-brand-white no-underline;
+        transition:
+            border-color 250ms var(--ease-professional),
+            background-color 250ms var(--ease-professional);
+    }
+
+    .btn-hero-outline:hover {
+        @apply border-brand-white bg-brand-white/10;
+    }
+
+    .link-quiet {
+        @apply font-semibold text-brand-navy no-underline;
+        transition: color 250ms var(--ease-professional);
+    }
+
+    .link-quiet:hover {
+        @apply text-brand-gold;
+    }
+
+    .form-control {
+        @apply mt-1 w-full min-w-0 rounded-lg border border-brand-navy/20 px-3 py-2.5 text-sm text-brand-ink;
+        transition:
+            border-color 250ms var(--ease-professional),
+            box-shadow 250ms var(--ease-professional);
+    }
+
+    .form-control:focus {
+        @apply border-brand-navy outline-none ring-2 ring-brand-navy/20;
+    }
+
+    .form-control-error {
+        @apply border-red-400;
+    }
+}
+
+@keyframes jw-reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(0.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes jw-marquee-ltr {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.client-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.client-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: jw-marquee-ltr 35s linear infinite;
+}
+
+.client-marquee__group {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding-inline: 1.5rem;
+    list-style: none;
+    margin: 0;
+}
+
+.client-marquee__item {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+}
+
+.client-marquee__logo {
+    display: block;
+    height: 2.25rem;
+    width: auto;
+    max-width: 11rem;
+    object-fit: contain;
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .client-marquee__track {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        max-width: 80%;
+        margin-inline: auto;
+        row-gap: 1rem;
+    }
+
+    .client-marquee__group[aria-hidden='true'] {
+        display: none;
+    }
+
+    .client-marquee {
+        mask-image: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .motion-card,
+    .motion-image img,
+    .btn-primary,
+    .btn-secondary,
+    .btn-accent,
+    .btn-hero-outline,
+    .link-quiet,
+    .form-control,
+    a,
+    button,
+    summary {
+        transition: none !important;
+    }
+
+    .motion-card:hover,
+    .motion-card:focus-within,
+    .group:hover .motion-image img,
+    .motion-image:hover img {
+        transform: none !important;
+        box-shadow: none;
+    }
+
+    .motion-reveal,
+    .motion-reveal-delay-1,
+    .motion-reveal-delay-2,
+    .motion-reveal-delay-3 {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .client-marquee__track {
+        animation: none !important;
+    }
+}
